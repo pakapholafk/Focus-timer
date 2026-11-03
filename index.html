@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer - อ่านหนังสือ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="timer-card">
+    <!-- ปุ่มเลือกโหมด -->
+    <div class="mode-buttons">
+      <button class="mode-btn active" onclick="setMode('work')">📖 โฟกัส</button>
+      <button class="mode-btn" onclick="setMode('shortBreak')">☕ พักสั้น</button>
+      <button class="mode-btn" onclick="setMode('longBreak')">🌴 พักยาว</button>
+    </div>
+
+    <!-- ตัวเลขนาฬิกา -->
+    <div class="timer-display" id="timer">25:00</div>
+
+    <!-- ปุ่มเพิ่ม/ลดเวลาด่วน -->
+    <div class="time-adjust">
+      <button onclick="adjustTime(-5)">-5น.</button>
+      <button onclick="adjustTime(-1)">-1น.</button>
+      <button onclick="adjustTime(1)">+1น.</button>
+      <button onclick="adjustTime(5)">+5น.</button>
+    </div>
+
+    <!-- ปุ่มควบคุม -->
+    <div class="controls">
+      <button id="start-btn" onclick="toggleTimer()">เริ่มอ่าน</button>
+      <button id="reset-btn" onclick="resetTimer()">รีเซ็ต</button>
+    </div>
+
+    <!-- ช่องตั้งค่าเวลาประจำโหมด -->
+    <div class="settings-box">
+      <p class="settings-title">⚙️ ตั้งเวลาประจำโหมด (นาที)</p>
+      <div class="setting-inputs">
+        <label>โฟกัส: <input type="number" id="work-input" value="25" min="1" max="120" onchange="updateSettings()"></label>
+        <label>พักสั้น: <input type="number" id="short-input" value="5" min="1" max="60" onchange="updateSettings()"></label>
+        <label>พักยาว: <input type="number" id="long-input" value="15" min="1" max="60" onchange="updateSettings()"></label>
+      </div>
+    </div>
+
+    <!-- ตัวนับจำนวนรอบ -->
+    <div class="session-info">
+      อ่านสะสมไปแล้ว: <span id="session-count">0</span> รอบ 🍅
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
